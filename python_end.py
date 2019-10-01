@@ -13,7 +13,6 @@ def nummer_erbij(getal):
 
 def gevoel(hoe, waiter):
     nummer = 1
-    #number_checker()
     while(hoe != "esc"):
         if (hoe == "toev"):
             keuze = input("freestyle of locked ")
@@ -24,7 +23,6 @@ def gevoel(hoe, waiter):
                     a.write("Woord : " + word + " , Nummer : " + nummero + "\n")
                 waiter = "false"
                 looper(hoe, waiter)
-                break
             elif (keuze == "freestyle"):
                 freestyle_text = input("Wat moet er in de .txt bestand ")
                 print(freestyle_text)
@@ -32,13 +30,11 @@ def gevoel(hoe, waiter):
                     a.write(freestyle_text + "\n")
                 waiter = "false"
                 looper(hoe, waiter)
-                break
             else:
                 print("error_writer")
                 waiter = "false"
                 looper(hoe, waiter)
-                break
-                    
+
 
         elif (hoe == "read"):
             with open("memes.txt", "r") as b:
@@ -52,18 +48,15 @@ def gevoel(hoe, waiter):
                         print("Failure")
                     waiter = "false"
                     looper(hoe, waiter)
-                    break
                 elif (regel == "alles"):
                     for i, value in enumerate(line,1):
                         print(i, value)
                     waiter = "false"
                     looper(hoe, waiter)
-                    break
                 else:
                     print("dwadwaa")
                     waiter = "false"
                     looper(hoe, waiter)
-                    break
         elif (hoe == "del"):
             with open("memes.txt","r") as b:
                 line = b.readlines()
@@ -82,19 +75,16 @@ def gevoel(hoe, waiter):
                         print("error 345")
                     waiter = "false"
                     looper(hoe, waiter)
-                    break
                 elif (regel == "alles"):
                     with open("memes.txt",  "w") as c:
                         for i in line :
                             del line[0]
                     waiter = "false"
                     looper(hoe, waiter)
-                    break
                 else:
                     print("error 543")
                     waiter = "false"
                     looper(hoe, waiter)
-                    break
         elif (hoe == "num"):
             with open("memes.txt", "r") as reader_num :
                 reader_regel = int(input("Uit welke regel?"))
@@ -104,17 +94,18 @@ def gevoel(hoe, waiter):
                 print(value_3)
                 waiter = "false"
                 looper(hoe, waiter)
-                break
         else:
             print("?")
     print("Stopping code")
     print("~~~~~~~")
     waiter = "true"
+    hoe = "done"
+    looper(hoe,waiter)
 def begin_code():
     hoe = ""
     commandos = ["toev", "read", "del", "num","esc"]
     while not hoe in commandos:
-        print("~~~~~~~")    
+        print("~~~~~~~")
         print("toev : woord toevoegen")
         print("read : regel(s) lezen")
         print("del   : regel verwijderen")
@@ -132,10 +123,10 @@ def looper(hoe, waiter):
         if (waiter == "false"):
             begin_code()
         else:
-            print("waiter is dead")
+            print("stopped")
 
 if (opening == "true"):
-    begin_code()
     opening = "false"
+    begin_code()
 else:
     print("ended")
